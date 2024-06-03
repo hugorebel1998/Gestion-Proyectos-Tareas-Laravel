@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
+Route::group(['prefix' => 'auth'], function () {
 
-    // Route::post('/login', 'AuthController@inicioSesion')->name('inicio-sesion');
+    Route::post('/login', 'AuthController@inicio')->name('inicio-sesion');
     // Route::post('/refresh-token', 'AuthController@refrescarToken')->name('refresh-token');
 });
