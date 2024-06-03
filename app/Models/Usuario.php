@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use MongoDB\Laravel\Eloquent\SoftDeletes;
+use MongoDB\Laravel\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
 
     const ESTATUS_ACTIVO   = 'activo';
@@ -35,4 +37,34 @@ class Usuario extends Model
     protected $casts = [
         'password' => 'hashed'
     ];
+
+    use SoftDeletes;
+
+    protected function nombre(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => strtolower($value)
+        );
+    }
+
+    protected function paterno(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => strtolower($value)
+        );
+    }
+
+    protected function materno(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => strtolower($value)
+        );
+    }
+
+    protected function nombreCompleto(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => implode(' ', array_values([$this->nombre, $this->paterno, $this->materno]))
+        );
+    }
 }
