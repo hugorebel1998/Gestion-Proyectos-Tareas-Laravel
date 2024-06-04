@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tarea extends Model
 {
+    const PRIOPIDADES_TAREA = ['baja', 'media', 'alta'];
+    const ESTATUS_TAREA     = ['inicio', 'en_curso', 'pausa', 'completada', 'cancelada'];
 
     protected $table = 'tareas';
 
@@ -45,5 +47,10 @@ class Tarea extends Model
         return Attribute::make(
             set: fn ($value) => strtolower($value)
         );
+    }
+
+    public function proyecto()
+    {
+        return $this->belongsTo(Proyecto::class);
     }
 }

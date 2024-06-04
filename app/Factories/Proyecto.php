@@ -43,4 +43,28 @@ class Proyecto
 
         return response()->json(['success' => true, 'message' => 'Proyecto restablecido'], 200);
     }
+
+    public static function select_tareas(string $proyecto_id)
+    {
+        $proyecto_db = ModelsProyecto::findOrFail($proyecto_id);
+
+        return $proyecto_db->tareas;
+    }
+
+    public static function create_task(array $tarea)
+    {
+        return Tarea::create($tarea);
+    }
+
+    public static function update_task(object $tarea_db, array $tarea)
+    {
+        return Tarea::update($tarea_db, $tarea);
+    }
+
+    public static function delete_task(object $tarea_db)
+    {
+        $tarea_db->delete();
+
+        return $tarea_db;
+    }
 }

@@ -41,4 +41,9 @@ class Proyecto extends Model
             set: fn ($value) => strtolower($value)
         );
     }
+
+    public function tareas()
+    {
+        return $this->hasMany(Tarea::class, 'proyecto_id');
+    }
 }
