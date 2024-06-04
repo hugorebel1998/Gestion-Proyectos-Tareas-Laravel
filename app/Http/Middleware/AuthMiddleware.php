@@ -26,6 +26,7 @@ class AuthMiddleware
             if ($response['success']) {
                 $request->attributes->add(['auth' => $response['user']]);
             }
+
             return $next($request);
         } else if ($request->path() == 'api/v1/auth/login') {
             return $next($request);

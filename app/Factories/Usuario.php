@@ -58,4 +58,10 @@ class Usuario
 
         return response()->json(['success' => true, 'message' => 'Contraseña actualizada con éxito'], 200);
     }
+
+    public static function proyectos(string $usuario_id)
+    {
+
+        return ModelsUsuario::with('proyectos')->findOrFail($usuario_id);
+    }
 }

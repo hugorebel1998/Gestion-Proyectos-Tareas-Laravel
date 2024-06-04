@@ -36,8 +36,8 @@ class UsuarioController extends Controller
             'nombre'   => 'sometimes|min:2|max:60',
             'paterno'  => 'sometimes|min:2|max:60',
             'materno'  => 'sometimes|min:2|max:60',
-            'username' => 'sometimes|min:5|max:30|unique:mongodb.usuarios,username,' .  $usuario_db->id . ',_id',
-            'email'    => 'sometimes|unique:usuarios,email,' . $usuario_db->id . ',_id',
+            'username' => 'sometimes|min:5|max:30|unique:mongodb.usuarios,username,' .  $usuario_db->id,
+            'email'    => 'sometimes|unique:usuarios,email,' . $usuario_db->id,
         ]);
 
         return Usuario::update($usuario_db, $usuario);
@@ -62,5 +62,10 @@ class UsuarioController extends Controller
         ]);
 
         return Usuario::restorePassword($usuario_id, $usuario);
+    }
+
+    public function proyectos($usuario_id)
+    {
+        return Usuario::proyectos($usuario_id);
     }
 }

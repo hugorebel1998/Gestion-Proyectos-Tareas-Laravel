@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use MongoDB\Laravel\Eloquent\SoftDeletes;
-use MongoDB\Laravel\Relations\HasMany;
-use MongoDB\Laravel\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Usuario extends Authenticatable
 {
@@ -13,9 +13,7 @@ class Usuario extends Authenticatable
     const ESTATUS_ACTIVO   = 'activo';
     const ESTATUS_INACTIVO = 'inactivo';
 
-    protected $connection = 'mongodb';
-
-    protected $collection = 'usuarios';
+    protected $table = 'usuarios';
 
     protected $fillable = [
         'nombre',
@@ -41,7 +39,7 @@ class Usuario extends Authenticatable
         'password' => 'hashed'
     ];
 
-    use SoftDeletes;
+    use HasUlids, SoftDeletes;
 
     protected function nombre(): Attribute
     {
@@ -71,7 +69,7 @@ class Usuario extends Authenticatable
         );
     }
 
-    public function proyectos(): HasMany
+    public function proyectos()
     {
         return $this->hasMany(Proyecto::class, 'usuario_id');
     }

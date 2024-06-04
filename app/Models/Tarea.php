@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Tarea extends Model
 {
 
-    protected $connection = 'mongodb';
-
-    protected $collection = 'tareas';
+    protected $table = 'tareas';
 
     protected $fillable = [
         'proyecto_id',
@@ -31,6 +30,8 @@ class Tarea extends Model
     protected $hidden = [
         'updated_at',
     ];
+
+    use HasUlids;
 
     protected function nombre(): Attribute
     {

@@ -3,19 +3,21 @@
 namespace App\Models\Tarea;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Model;
 
 class Comentario extends Model
 {
-    protected $connection = 'mongodb';
 
-    protected $collection = 'tarea_comentarios';
+    protected $table = 'tarea_comentarios';
 
     protected $fillable = [
         'tarea_id',
         'usuario_id',
         'comentario',
     ];
+
+    use HasUlids;
 
 
     protected function comentario(): Attribute
