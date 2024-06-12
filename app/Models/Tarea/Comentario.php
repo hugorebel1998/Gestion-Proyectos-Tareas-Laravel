@@ -23,6 +23,7 @@ class Comentario extends Model
     protected function comentario(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }

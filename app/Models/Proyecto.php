@@ -31,6 +31,7 @@ class Proyecto extends Model
     protected function nombre(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }
@@ -38,6 +39,7 @@ class Proyecto extends Model
     protected function descripcion(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }

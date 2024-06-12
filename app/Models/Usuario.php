@@ -48,6 +48,7 @@ class Usuario extends Authenticatable
     protected function nombre(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }
@@ -55,6 +56,7 @@ class Usuario extends Authenticatable
     protected function paterno(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }
@@ -62,6 +64,7 @@ class Usuario extends Authenticatable
     protected function materno(): Attribute
     {
         return Attribute::make(
+            get: fn ($value) => ucfirst($value),
             set: fn ($value) => strtolower($value)
         );
     }
@@ -69,7 +72,7 @@ class Usuario extends Authenticatable
     protected function nombreCompleto(): Attribute
     {
         return Attribute::make(
-            get: fn () => implode(' ', array_values([$this->nombre, $this->paterno, $this->materno]))
+            get: fn () => implode(' ', array_map('ucfirst', array_filter([$this->nombre, $this->paterno, $this->materno])))
         );
     }
 
