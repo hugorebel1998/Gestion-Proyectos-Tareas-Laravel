@@ -25,6 +25,10 @@ class Usuario extends Authenticatable
         'estatus',
     ];
 
+    protected $appends = [
+        'nombre_completo'
+    ];
+
     protected $attributes = [
         'estatus' => self::ESTATUS_ACTIVO
     ];

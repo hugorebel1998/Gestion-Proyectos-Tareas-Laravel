@@ -62,6 +62,8 @@ class Usuario
     public static function proyectos(string $usuario_id)
     {
 
-        return ModelsUsuario::with('proyectos')->findOrFail($usuario_id);
+        $usuario_db = ModelsUsuario::findOrFail($usuario_id);
+        
+        return $usuario_db->proyectos;
     }
 }

@@ -11,6 +11,6 @@ Route::group(['prefix' => 'usuarios'], function () {
     Route::delete('/{usuario}', 'UsuarioController@eliminar')->name('eliminar');
     Route::get('/restablecer/{usuario}', 'UsuarioController@restablecer')->name('restablecer');
     Route::put('/contrasena/{usuario}', 'UsuarioController@restablecerContrasena')->name('contrasena');
-    Route::get('/proyectos/{usuario}', 'UsuarioController@proyectos')->name('proyectos');
+    Route::get('/{usuario}/proyectos', 'UsuarioController@proyectos')->name('proyectos');
 
 });

@@ -36,7 +36,7 @@ class UsuarioController extends Controller
             'nombre'   => 'sometimes|min:2|max:60',
             'paterno'  => 'sometimes|min:2|max:60',
             'materno'  => 'sometimes|min:2|max:60',
-            'username' => 'sometimes|min:5|max:30|unique:mongodb.usuarios,username,' .  $usuario_db->id,
+            'username' => 'sometimes|min:5|max:30|unique:usuarios,username,' .  $usuario_db->id,
             'email'    => 'sometimes|unique:usuarios,email,' . $usuario_db->id,
         ]);
 
