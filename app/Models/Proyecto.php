@@ -36,6 +36,13 @@ class Proyecto extends Model
         );
     }
 
+    // protected function estatus(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => ucfirst($value),
+    //     );
+    // }
+
     protected function descripcion(): Attribute
     {
         return Attribute::make(

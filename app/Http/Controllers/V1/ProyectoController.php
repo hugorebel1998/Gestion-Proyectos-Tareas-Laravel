@@ -75,7 +75,7 @@ class ProyectoController extends Controller
         $tarea = $this->validate($request, [
             'proyecto_id' => 'required|exists:proyectos,id',
             'usuario_id' => 'required|exists:usuarios,id',
-            'nombre' => 'required|unique:tareas,nombre',
+            'nombre' => 'required',
             'descripcion' => 'required|min:5|max:150',
             'prioridad' => 'required|' . Rule::in(ModelsTarea::PRIOPIDADES_TAREA),
             'estatus' => 'required|' . Rule::in(ModelsTarea::ESTATUS_TAREA),
@@ -93,7 +93,7 @@ class ProyectoController extends Controller
         $tarea_db = ModelsTarea::where('proyecto_id', $proyecto_db['id'])->findOrFail($tarea_id);
 
         $tarea = $this->validate($request, [
-            'nombre' => 'required|unique:tareas,nombre',
+            'nombre' => 'required',
             'descripcion' => 'required|min:5|max:150',
             'prioridad' => 'required|' . Rule::in(ModelsTarea::PRIOPIDADES_TAREA),
             'estatus' => 'required|' . Rule::in(ModelsTarea::ESTATUS_TAREA),

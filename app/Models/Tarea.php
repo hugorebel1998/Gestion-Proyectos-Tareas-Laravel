@@ -24,11 +24,6 @@ class Tarea extends Model
         'fecha_termino',
     ];
 
-    protected $casts = [
-        'fecha_inicio' => 'date',
-        'fecha_termino' => 'date',
-    ];
-
     protected $hidden = [
         'updated_at',
     ];

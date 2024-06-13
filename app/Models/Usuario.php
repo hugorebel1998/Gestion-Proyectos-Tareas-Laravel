@@ -78,6 +78,6 @@ class Usuario extends Authenticatable
 
     public function proyectos()
     {
-        return $this->hasMany(Proyecto::class, 'usuario_id');
+        return $this->hasMany(Proyecto::class, 'usuario_id')->orderBy('id', 'desc');
     }
 }
