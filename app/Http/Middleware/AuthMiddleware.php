@@ -28,7 +28,7 @@ class AuthMiddleware
             }
 
             return $next($request);
-        } else if ($request->path() == 'api/v1/auth/login') {
+        } else if ($request->path() == 'api/v1/auth/login' || $request->path() == 'api/v1/auth/refresh-token') {
             return $next($request);
         } else {
             return response()->json(['success' => false, 'message' => 'Acceso no autorizado'], 401);

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'usuarios'], function () {
+Route::group(['prefix' => 'usuarios', 'middleware' => 'authMain'], function () {
 
     Route::get('/', 'UsuarioController@listar')->name('listar');
     Route::get('/mostrar/{usuario}', 'UsuarioController@listar')->name('mostrar');
@@ -12,5 +12,4 @@ Route::group(['prefix' => 'usuarios'], function () {
     Route::get('/restablecer/{usuario}', 'UsuarioController@restablecer')->name('restablecer');
     Route::put('/contrasena/{usuario}', 'UsuarioController@restablecerContrasena')->name('contrasena');
     Route::get('/{usuario}/proyectos', 'UsuarioController@proyectos')->name('proyectos');
-
 });

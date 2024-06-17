@@ -23,7 +23,7 @@ class Tarea extends Model
         'fecha_inicio',
         'fecha_termino',
     ];
-
+        
     protected $hidden = [
         'updated_at',
     ];
